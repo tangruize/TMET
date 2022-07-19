@@ -1,0 +1,6 @@
+[submodule "tlc-cmd"]
+	path = tlc-cmd
+	url = https://github.com/tangruize/tlc-cmd
+[submodule "wraft"]
+	path = wraft
+	url = https://github.com/tangruize/model-based-explorative-testing-for-willemt-raft

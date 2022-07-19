@@ -1,0 +1,30 @@
+{
+    global:
+        # expose some symbols of the library (for ptracer)
+        reg_func_dict;
+        print_info_internal;
+        # below are intercepted functions
+        #open;
+        send;
+        sendto;
+        socket;
+        accept;
+        connect;
+        close;
+        write;
+        #free;
+        #malloc;
+        #calloc;
+        #realloc;
+        sendmsg;
+        sendfile;
+        #openat;
+        accept4;
+        #random;
+        clock_gettime;
+        gettimeofday;
+        time;
+        clock_getres;
+    local:
+        *;
+};
