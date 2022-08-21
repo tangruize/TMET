@@ -71,12 +71,12 @@ start)
   # enable ip forwarding
   sysctl -w net.ipv4.ip_forward=1 > /dev/null
   # no network address translation (NAT) for this subnet
-  iptables -t mangle -I POSTROUTING -d "${SUBNET}" -j ACCEPT
+  iptables -t nat -I POSTROUTING -d "${SUBNET}" -j ACCEPT
   ;;
 stop)
   set -x
   ip route del "${SUBNET}" via "${CONTROLLER_IP}" dev "${INTERFACE}"
-  iptables -t mangle -D POSTROUTING -d "${SUBNET}" -j ACCEPT
+  iptables -t nat -D POSTROUTING -d "${SUBNET}" -j ACCEPT
   lxc exec "$CONTROLLER" -- ip route del local "${SUBNET}" dev lo
   lxc exec "$CONTROLLER" -- iptables -t mangle -D PREROUTING -d "${SUBNET}" -p tcp -m tcp -j TPROXY --on-port "${PORT}" --on-ip 127.0.0.1
   ;;
